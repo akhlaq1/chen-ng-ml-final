@@ -1,0 +1,89 @@
+<!-- <h1>File Upload</h1>
+
+  <input type="file"   (change)="onFileSelected($event)" class="form-control" required>
+  <div class="form-group text-right">
+      <button type="submit" class="btn btn-success" (click)="uploadFileFunc()">UPload to server</button>
+    </div>
+
+<div>
+  <img src="{{outImgUrl}}" alt="">
+</div>
+
+<div>
+  <h3>See the Converted Image Gallery</h3>
+  <button class="btn btn-primary" (click)="goToList()">List</button>
+</div>
+ -->
+
+
+ <!-- ------------------------------------------------------------------------------ -->
+<!-- <div style="text-align: right !important; display: block; margin-right: 0%; margin-top: -10vh; padding: 1%">
+
+  <h3>{{local_user.displayName}}</h3>
+
+</div> -->
+ <div class="main-container">
+
+
+<!--After upload content-->
+<div class="ui placeholder segment " *ngIf="uploadedFile">
+
+  <!--Header message-->
+  <h2 class="ui header">
+    <i class="icon green check"></i>
+    Successfully uploaded !
+  </h2>
+  <!--End of header message-->
+
+  <!--Uploaded file content-->
+  <div class="ui placeholder segment">
+    <h3 class="ui header left floating">
+      Output: 
+    </h3>
+      <img src="{{ outImgUrl }}" alt="">
+      <div class="ui horizontal divider"></div>
+     
+    
+  </div>
+  <!--End of uploaded file content-->
+
+</div>
+<!--End of after upload content-->
+
+<!--Before upload content-->
+<div class="ui placeholder segment " *ngIf="!uploadedFile">
+
+  <!--Header messages-->
+  <h2 class="ui header" *ngIf="isUploadStarted">
+    <i class="blue cloud upload icon"></i>
+    Uploading...</h2>
+  <h2 class="ui header" *ngIf="isShowSelectFilesText">Select file</h2>
+  <!--End of header messages-->
+<div class="progressbar">
+  <app-progressbar
+  [progress]="progress"
+  *ngIf="isUploadStarted">
+</app-progressbar>
+
+</div>
+  
+  <!--File upload form-->
+  <div class="ui horizontal divider input-div "></div>
+  <input type="file"
+         class=" floating"
+         (change)="onFileSelected($event)">
+  <div class="ui horizontal divider"></div>
+  <button class="ui primary button"
+          (click)="uploadFileFunc()"
+          [disabled]="isUploadButtonDisabled">
+    Upload
+  </button>
+  <!--End of file upload form-->
+
+</div>
+<!--End of before upload content-->
+
+
+
+
+ </div>

@@ -1,0 +1,182 @@
+<!-- <div *ngIf="auth.user$ | async; then authenticated else guest">
+
+</div>
+
+
+<ng-template #guest>
+<h3>Howdy, GUEST</h3>
+<p>Login to get started...</p>
+
+<button (click)="auth.googleSignin()">
+   <i class="fa fa-google"></i> Connect Google
+</button>
+
+</ng-template>
+
+
+<ng-template #authenticated>
+<div *ngIf="auth.user$ | async as user">
+   <h3>Howdy, {{ user.displayName }}</h3>
+   <img  [src]="user.photoURL">
+   <p>UID: {{ user.uid }}</p>
+   <button (click)="auth.signOut()">Logout</button>
+</div>
+</ng-template> -->
+
+<!-- <mat-card class="example-card">
+   <mat-card-header>
+   <mat-card-title>Login</mat-card-title>
+   </mat-card-header>
+   <mat-card-content>
+   <form class="example-form">
+      <table class="example-full-width" cellspacing="0">
+         <tr>
+         <td>
+            <mat-form-field class="example-full-width">
+            <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+            </mat-form-field>
+         </td>
+         </tr>
+         <tr>
+         <td><mat-form-field class="example-full-width">
+         <input matInput placeholder="Password" [(ngModel)]="password"type="password" name="password" required>
+         </mat-form-field></td>
+      </tr></table>
+   </form>
+   <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+   </mat-card-content>
+   <mat-card-actions>
+   <button mat-raised-button (click)="login()" color="primary">Login</button>
+   </mat-card-actions>
+</mat-card> -->
+
+
+<div class="container">
+      <div class="row">
+      <div class="col-md-5 mx-auto">
+      <div id="first" *ngIf="toggle">
+         <div class="myform form ">
+               <div class="logo mb-3">
+                  <div class="col-md-12 text-center">
+                  <h1>Login</h1>
+                  </div>
+            </div>
+                  <form  method="post" name="login" [formGroup]="loginForm" (ngSubmit)="onLogInSubmit()">
+                        <div class="form-group">
+                              <label for="exampleInputEmail1">Email address</label>
+                              <input type="email"  formControlName="email"  class="form-control" [ngClass]="{ 'is-invalid': submitted_login && f.email.errors }"  id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                              <div *ngIf="submitted_login && f.email.errors" class="invalid-feedback">
+                                    <div *ngIf="f.email.errors.required">Email is required</div>
+                                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                </div>
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputEmail1">Password</label>
+                              <input type="password" formControlName="password"  id="password" [ngClass]="{ 'is-invalid': submitted_login && f.password.errors }"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
+                           
+   
+                              <div *ngIf="submitted_login && f.password.errors" class="invalid-feedback">
+                                    <div *ngIf="f.password.errors.required">Password is required</div>
+                                    <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                                </div>
+   
+
+                        </div>
+                        <div class="form-group">
+                           <p class="text-center">By signing up you accept our <a href="#">Terms Of Use</a></p>
+                        </div>
+                        <div class="col-md-12 text-center ">
+                           <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Login</button>
+                        </div>
+                        <div class="col-md-12 ">
+                           <div class="login-or">
+                              <hr class="hr-or">
+                              <span class="span-or">or</span>
+                           </div>
+                        </div>
+                        <div >
+
+
+                        </div>
+                        <div class="form-group">
+                           <p class="text-center">Don't have account? <button class="btn btn-secondary" id="signup" (click)="toggle_func()">Sign up here</button></p>
+                        </div>
+                     </form>
+                     <div style="height: 5rem; display: flex; align-items: center; justify-content:center;">
+                        <button mat-button (click)="googleSignIn()" style="padding: 1rem;">
+                              <mat-icon style="width: 50px; height:40px"
+                                          svgIcon="logo"></mat-icon> Login With Google
+                              </button>  
+                              </div>
+               
+         </div>
+      </div>
+         <div id="second" *ngIf="!toggle">
+            <div class="myform form ">
+                     <div class="logo mb-3">
+                        <div class="col-md-12 text-center">
+                           <h1 >Signup</h1>
+                        </div>
+                     </div>
+                     
+                     <form  name="registration" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                        
+                        <div class="form-group">
+                           <label for="exampleInputEmail1">First Name</label>
+                           <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted_register && f_register.firstName.errors }"  id="firstName" aria-describedby="emailHelp" placeholder="Enter Firstname">
+                           <div *ngIf="submitted_register && f_register.firstName.errors" class="invalid-feedback">
+                                 <div *ngIf="f_register.firstName.errors.required">First Name is required</div>
+                             </div>
+                        </div>
+                        <div class="form-group">
+                           <label for="exampleInputEmail1">Last Name</label>
+                           <input type="text"  name="lastname" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted_register && f_register.lastName.errors }" id="lastName" aria-describedby="emailHelp" placeholder="Enter Lastname">
+                           <div *ngIf="submitted_register && f_register.lastName.errors" class="invalid-feedback">
+                                 <div *ngIf="f_register.lastName.errors.required">Last Name is required</div>
+                             </div>
+                        </div>
+                        <div class="form-group">
+                           <label for="exampleInputEmail1">Email address</label>
+                           <input type="email"  formControlName="email"  class="form-control" [ngClass]="{ 'is-invalid': submitted_register && f_register.email.errors }"  id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                           <div *ngIf="submitted_register && f_register.email.errors" class="invalid-feedback">
+                                 <div *ngIf="f_register.email.errors.required">Email is required</div>
+                                 <div *ngIf="f_register.email.errors.email">Email must be a valid email address</div>
+                             </div>
+                        </div>
+                        <div class="form-group">
+                           <label for="exampleInputEmail1">Password</label>
+                           <input type="password" formControlName="password"  id="password" [ngClass]="{ 'is-invalid': submitted_register && f_register.password.errors }"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
+                        
+
+                           <div *ngIf="submitted_register && f_register.password.errors" class="invalid-feedback">
+                                 <div *ngIf="f_register.password.errors.required">Password is required</div>
+                                 <div *ngIf="f_register.password.errors.minlength">Password must be at least 6 characters</div>
+                             </div>
+
+                        </div>
+
+                        <div class="form-group">
+                              <label for="exampleInputEmail1">Confirm Password</label>
+                              <input type="password" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted_register && f_register.confirmPassword.errors }"  id="confirmpassword"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
+                           
+                              <div *ngIf="submitted_register && f_register.confirmPassword.errors" class="invalid-feedback">
+                                    <div *ngIf="f_register.confirmPassword.errors.required">Confirm Password is required</div>
+                                    <div *ngIf="f_register.confirmPassword.errors.mustMatch">Passwords must match</div>
+                                </div>
+                           
+                           </div>
+
+                        <div class="col-md-12 text-center mb-3">
+                           <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Get Started For Free</button>
+                        </div>
+                        <div class="col-md-12 ">
+                           <div class="form-group">
+                              <p class="text-center"><button class="btn btn-secondary" id="signin" (click)="toggle_func()">Already have an account?</button></p>
+                           </div>
+                        </div>
+                           
+                     </form>
+                  </div>
+      </div>
+   </div>
+   </div>   

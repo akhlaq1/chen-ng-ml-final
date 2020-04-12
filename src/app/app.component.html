@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Facelook</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/login']">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/api']">Upload</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/list']">Gallery</a>
+        </li>
+
+
+      </ul>
+      <span class="nav-item float-right" *ngIf="auth.isLoggedIn" >
+      
+       
+        <a  class="btn nav-link" (click)="signout_func()" style="color:blue"> <h4><strong>Logout</strong></h4>  </a>
+      
+      
+      
+      </span>    
+    
+
+    </div>
+  </nav>
+<a class="btn" (click)="backClicked()">Go Back</a>
+<router-outlet></router-outlet>

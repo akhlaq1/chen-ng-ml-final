@@ -1,0 +1,62 @@
+<!--After upload content-->
+<div class="ui placeholder segment main-container" *ngIf="uploadedFile">
+
+<div class="ui fluid action input">
+  <input type="text" placeholder="Input name">
+  <div class="ui button">Save</div>
+</div>
+
+  <!--Header message-->
+  <h2 class="ui header">
+    <i class="icon green check"></i>
+    Successfully uploaded !
+  </h2>
+  <!--End of header message-->
+
+  <!--Uploaded file content-->
+  <div class="ui placeholder segment">
+    <h3 class="ui header left floating">
+      Output: 
+    </h3>
+      <img src="{{ uploadedFile.img_url }}" alt="">
+      <div class="ui horizontal divider"></div>
+     
+    
+  </div>
+  <!--End of uploaded file content-->
+
+</div>
+<!--End of after upload content-->
+
+<!--Before upload content-->
+<div class="ui placeholder segment" *ngIf="!uploadedFile">
+
+  <!--Header messages-->
+  <h2 class="ui header" *ngIf="isUploadStarted">
+    <i class="blue cloud upload icon"></i>
+    Uploading...</h2>
+  <h2 class="ui header" *ngIf="isShowSelectFilesText">Select file</h2>
+  <!--End of header messages-->
+<div class="progressbar">
+  <app-progressbar
+  [progress]="fileService.progress | async"
+  *ngIf="isUploadStarted">
+</app-progressbar>
+
+</div>
+  
+  <!--File upload form-->
+  <div class="ui horizontal divider"></div>
+  <input type="file"
+         class=" right floating"
+         (change)="onSelectedFile($event.target.files)">
+  <div class="ui horizontal divider"></div>
+  <button class="ui primary button"
+          (click)="upload()"
+          [disabled]="isUploadButtonDisabled">
+    Upload
+  </button>
+  <!--End of file upload form-->
+
+</div>
+<!--End of before upload content-->

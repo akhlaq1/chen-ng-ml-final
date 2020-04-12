@@ -1,0 +1,5 @@
+<div class="ui indicating progress" #progressbar [attr.data-percent]="progress">
+  <div class="bar" [ngStyle]="{'width': progress + '%'}">
+    <div class="progress">{{progress}}%</div>
+  </div>
+</div>
