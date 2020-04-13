@@ -37,7 +37,7 @@ export class UserProfileComponent implements OnInit {
      private r:ActivatedRoute,
      private matIconRegistry: MatIconRegistry,
      private domSanitizer: DomSanitizer,
-     private formBuilder: FormBuilder) { 
+     private formBuilder: FormBuilder) {
       this.matIconRegistry.addSvgIcon(
         "logo",
         this.domSanitizer.bypassSecurityTrustResourceUrl(googleLogoURL));
@@ -54,6 +54,7 @@ export class UserProfileComponent implements OnInit {
     }
 
   ngOnInit() {
+
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -63,12 +64,12 @@ export class UserProfileComponent implements OnInit {
     }, {
       validator: MustMatch('password', 'confirmPassword')
   });
-  
+
   this.loginForm = this.formBuilder.group({
-   
+
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-  
+
   });
 }
 
@@ -102,7 +103,7 @@ async onSubmit() { // Registration Function
     console.log("Data from register async function ",dataFromRegister)
 
 
-    
+
       // .then(data => {
       //   alert("SUCCESS!! ")
       //   this.router.navigate['login']
@@ -139,8 +140,8 @@ googleSignIn(){
   console.log()
   this.auth.googleSignin()
   this.auth.user$.subscribe(user=>{
-    
-  }) 
+
+  })
 }
 
 

@@ -23,10 +23,10 @@ export class ApiComponentComponent implements OnInit {
   isUploadStarted: boolean =false;
   isUploadButtonDisabled: boolean = true;
   uploadedFile:boolean = false;
-  
+
 
     // Define FormGroup to student's form
- 
+
   constructor(
               private http:HttpClient,
               private firebaseImageService: FirebaseImageService,
@@ -34,7 +34,7 @@ export class ApiComponentComponent implements OnInit {
     ) { }
 
   // local_user = JSON.parse(localStorage.getItem("userData"))
-  
+
   ngOnInit() {
 
   }
@@ -59,14 +59,14 @@ export class ApiComponentComponent implements OnInit {
       reportProgress: true,
       observe: 'events'
     })
-    
-    .subscribe(event =>{ 
+
+    .subscribe(event =>{
       console.log("Heroku response   ",event)
       if (event.type == HttpEventType.UploadProgress){
-        
+
         this.progress = Math.round(event.loaded/event.total*100)
         console.log("Upload Progress: ", this.progress,"%")
-        
+
         if (this.progress == 100){
           console.log("processing started , have patience")
         }
@@ -80,8 +80,8 @@ export class ApiComponentComponent implements OnInit {
         this.outImgUrl = event.body['img_url']
         this.firebaseImageService.pushConvertedImageUrlToFirebase(this.outImgUrl)
       }
-      
-  
+
+
   },
       error => console.log("Heroku response   ",error)
     );
@@ -90,6 +90,12 @@ export class ApiComponentComponent implements OnInit {
     this.router.navigate(["../list"], { relativeTo: this.r.parent });
  }
 
+ async onInputClick(inputData){
+  console.log("Input data from apiCompoenent :",inputData)
+  let key  = localStorage.getItem('pushedImageKey')
+  await this.firebaseImageService.updateNamedb(inputData,key);
+  alert("Name of person updated and it is ")
+ }
 
 
 }

@@ -54,7 +54,7 @@ export class AuthService {
     );
    }
 
-   
+
 
    async googleSignin() {
     const provider = new auth.GoogleAuthProvider();
@@ -72,7 +72,7 @@ export class AuthService {
     const updateUserData = await this.updateUserData(result.user,user1)
 
     return updateUserData
-    
+
 }
 
 // async sendEmailVerification() {
@@ -88,8 +88,8 @@ export class AuthService {
     //   console.log("This is data from loginEmailPass from firestore ",data)
     // })
     console.log("This is data from loginEmailPass from firestore ",this.user$)
-    
-    
+
+
     localStorage.setItem('uid',result.user.uid)
 
     console.log("Login result data ",result)
@@ -100,7 +100,7 @@ export class AuthService {
 
   async updateUserData(user,local_user=null) {
     // Sets user data to firestore on login
-    
+
     const userRef: AngularFirestoreDocument<User> =  this.afs.doc(`users/${user.uid}`);
     let data;
     if(local_user){
@@ -120,7 +120,7 @@ export class AuthService {
       }
     }
     await userRef.set(data, { merge: true })
-    
+
     return data
 
   }
@@ -136,14 +136,20 @@ export class AuthService {
     this.logedIn = bool;
   }
   get isLoggedIn(): boolean {
+    let reply: boolean = false;
     //const  user  =  localStorage.getItem('user');
     if (this.logedIn){
-      this.user$.subscribe(data => {localStorage.setItem('userData',JSON.stringify(data))})
-      return true
+      //this.user$.subscribe(data => {localStorage.setItem('userData',JSON.stringify(data))})
+      //console.log(this.user$)
+      if (this.user$){
+          reply = true;
+      }
+      else{
+        reply  = false
+      }
+
     }
-    else{
-      return false
-    }
+return reply
 }
 
 }

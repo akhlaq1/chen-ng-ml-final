@@ -23,7 +23,12 @@ export class UploadFileComponent {
   isUploadStarted = false;
   uploadedFile: IUploadResponse;
 
+
   constructor(protected fileService: FileService) {
+  }
+
+  onInputClick(name){
+    console.log("bandy ka naam: ",name)
   }
 
   upload(): void {

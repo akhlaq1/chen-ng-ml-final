@@ -96,8 +96,6 @@ THE SOFTWARE.
 
 @angular/material/button
 
-@angular/material/dialog
-
 @angular/material/icon
 
 @angular/material/progress-spinner

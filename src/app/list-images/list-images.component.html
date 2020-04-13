@@ -1,10 +1,10 @@
-<!-- 
+<!--
 <table>
   <tr *ngFor="let student of Student">
     <td>
       <img src="{{student.image_url}}" alt="">
     </td>
-  </tr>  
+  </tr>
 </table> -->
 
 
@@ -12,7 +12,7 @@
   <mdb-image-modal [modalImages]="Student" type="no-margin"></mdb-image-modal>
 </div> -->
 
-  
+
 
 <!-- <div class="row">
   <mdb-image-modal [modalImages]="student" type="no-margin"></mdb-image-modal>
@@ -43,9 +43,9 @@
     </div>
   </div>
 </div>
-<div class="spinner_container">
+<div class="spinner_container" *ngIf = "!Student">
   <mat-progress-spinner
-  *ngIf = "spinner"
+
   class="example-margin"
   [color]="color"
   [mode]="mode"

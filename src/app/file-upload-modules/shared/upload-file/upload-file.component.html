@@ -1,10 +1,7 @@
 <!--After upload content-->
 <div class="ui placeholder segment main-container" *ngIf="uploadedFile">
 
-<div class="ui fluid action input">
-  <input type="text" placeholder="Input name">
-  <div class="ui button">Save</div>
-</div>
+
 
   <!--Header message-->
   <h2 class="ui header">
@@ -16,12 +13,12 @@
   <!--Uploaded file content-->
   <div class="ui placeholder segment">
     <h3 class="ui header left floating">
-      Output: 
+      Output:
     </h3>
       <img src="{{ uploadedFile.img_url }}" alt="">
       <div class="ui horizontal divider"></div>
-     
-    
+
+
   </div>
   <!--End of uploaded file content-->
 
@@ -44,7 +41,7 @@
 </app-progressbar>
 
 </div>
-  
+
   <!--File upload form-->
   <div class="ui horizontal divider"></div>
   <input type="file"
@@ -60,3 +57,7 @@
 
 </div>
 <!--End of before upload content-->
+<div class="ui fluid action input inputdiv" >
+  <input type="text" placeholder="Input name" #inputData>
+  <div class="ui button" (click)="onInputClick(inputData.value)">Save</div>
+</div>
