@@ -25,24 +25,38 @@
 </div> -->
 
 <div class="container">
-	<div class="row">
+
 		<div class="row">
+   <!--
             <div class="col-lg-3 col-md-4 col-xs-6 thumb" *ngFor="let student of Student">
+                 -->
+                  <div class="col" *ngFor="let student of Student">
                   <!-- <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""
                     data-image="{{student.image_url}}"
                     data-target="#image-gallery"> -->
                     <a  class="btn" (click)=image_clicked(student) >
+
+                    <div class="card" style="width: 18rem; height:28 rem">
+                      <img class="card-img-top" src="{{student.image_url}}" alt="{{student.name}}">
+                      <div class="card-body">
+                        <h5 class="card-title">{{student.name}}</h5>
+                      </div>
+                    </div>
+                    <!--
                       <img class="img-thumbnail"
-                      src="{{student.image_url}}"
+                      src=""
                       height="800px"
                       width="800px">
+                      <p>{{student.name}}</p>
+                      -->
+
                     </a>
 
                 <!-- </a> -->
             </div>
     </div>
   </div>
-</div>
+
 <div class="spinner_container" *ngIf = "!Student">
   <mat-progress-spinner
 

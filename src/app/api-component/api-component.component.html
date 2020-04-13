@@ -22,17 +22,25 @@
   <h3>{{local_user.displayName}}</h3>
 
 </div> -->
- <div class="main-container">
+ <div class="main-container" style="text-align:center !important;">
 
 
 
 
 <!--After upload content-->
-<div class="ui fluid action input inputdiv" *ngIf="uploadedFile">
-  <h3>Input Name of the person</h3>
-  <input type="text" placeholder="Input name" #inputData>
+<br/>
+<div class="ui fluid action input inputdiv" style="width: 80% !important; margin-left:10% !important;" *ngIf="uploadedFile">
+
+<div>
+  <h4></h4>
+</div>
+
+<br/>
+
+  <input type="text" placeholder="Input name of the following person" style=" text-align:center !important;" #inputData>
   <button class="ui button" (click)="onInputClick(inputData.value)">Save</button>
 </div>
+
 <div class="ui placeholder segment " *ngIf="uploadedFile">
 
   <!--Header message-->

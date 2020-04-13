@@ -1,8 +1,14 @@
 <div class="container">
 
-  <h3>Converted Image</h3>
+  <h3 style="display: block !important">Converted Image</h3>
 
-  <p>Name  : {{image_details.name}}</p>
+<div *ngIf="!image_details.name" class="ui fluid action input inputdiv" style="width: 80% !important; margin-left:10% !important; margin-bottom:4% !important" >
+    <br/>
+  <input type="text" placeholder="Input name of the following person" style=" text-align:center !important;" #inputData>
+  <button class="ui button" (click)="onInputClick(inputData.value)">Save</button>
+</div>
+
+  <p *ngIf="image_details.name">Name  : {{image_details.name}}</p>
 
   <img src="{{image_details.image_url}}"
        class="img-rounded" alt="Responsive Image"

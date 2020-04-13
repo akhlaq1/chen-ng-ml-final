@@ -94,7 +94,8 @@ export class ApiComponentComponent implements OnInit {
   console.log("Input data from apiCompoenent :",inputData)
   let key  = localStorage.getItem('pushedImageKey')
   await this.firebaseImageService.updateNamedb(inputData,key);
-  alert("Name of person updated and it is ")
+  alert("Name of person updated")
+  this.goToList()
  }
 
 
