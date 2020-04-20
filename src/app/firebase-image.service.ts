@@ -43,7 +43,8 @@ export class FirebaseImageService {
     pushConvertedImageUrlToFirebase(url){
       this.GetStudentsList()
       this.studentsRef.push({
-        image_url:url
+        image_url:url,
+        name: ''
     }).then(ref => {
       localStorage.setItem("pushedImageKey",ref.key)
     })
