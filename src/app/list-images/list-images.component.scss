@@ -4,3 +4,34 @@
     justify-content: center;
     align-items: center;
 }
+
+#card_header {
+ height: 35px;
+}
+
+.close-icon{
+    margin-top: -6%;
+    margin-right: -10%;
+}
+
+#close_icon{
+    color: red;
+    
+}
+
+.card{
+    margin-bottom: 8%;
+}
+
+
+.update_icon{
+    position: absolute;
+    float: left;
+    margin-left: -80%;
+    margin-top: -5%;
+
+}
+
+#update_icon{
+    color: black;
+}

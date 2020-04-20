@@ -35,7 +35,8 @@ import { UploadFileComponent } from './file-upload-modules/shared/upload-file/up
 
 
 import {FileService} from './file-upload-modules/services/file.service';
-import { ImageDisplayComponent } from './image-display/image-display.component'
+import { ImageDisplayComponent } from './image-display/image-display.component';
+import { UpdateImageComponent } from './update-image/update-image.component'
 // Firebase config
 
 const config = {
@@ -60,6 +61,7 @@ const config = {
     ProgressbarComponent,
     UploadFileComponent,
     ImageDisplayComponent,
+    UpdateImageComponent,
 
   ],
   imports: [

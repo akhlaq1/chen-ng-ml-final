@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angular/fire/database';  // Firebase modules for Database, Data list and Single object
 import {Images} from './images'
 import {AngularFireModule} from '@angular/fire'
+import {Subject} from  'rxjs'
+import {switchMap} from 'rxjs/operators'
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +21,7 @@ export class FirebaseImageService {
 
 
 
+  
   setUserdata(data){
     this.userData = data
     localStorage.setItem('uid', data.uid);
@@ -50,6 +54,11 @@ export class FirebaseImageService {
     updateNamedb(name,key){
       let uid  = localStorage.getItem('uid')
       this.db.database.ref(uid+"/"+ key).update({name:name})
+    }
+
+    remove_image(image){
+      let uid = localStorage.getItem('uid')
+      this.db.database.ref(uid+"/"+ image.key).remove()
     }
 
   }

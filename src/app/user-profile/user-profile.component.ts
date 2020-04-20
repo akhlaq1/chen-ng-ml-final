@@ -102,18 +102,6 @@ async onSubmit() { // Registration Function
 
     console.log("Data from register async function ",dataFromRegister)
 
-
-
-      // .then(data => {
-      //   alert("SUCCESS!! ")
-      //   this.router.navigate['login']
-
-      // })
-      // .catch(error => {
-      //   this.error_toggle = true
-      //   this.errors = error
-      //   alert(error)
-      // })
 }
 
 async onLogInSubmit(){

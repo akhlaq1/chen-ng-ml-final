@@ -5,6 +5,7 @@ import {UploadImageComponent} from './upload-image/upload-image.component'
 import {ListImagesComponent} from './list-images/list-images.component'
 import {ApiComponentComponent} from './api-component/api-component.component'
 import {ImageDisplayComponent} from './image-display/image-display.component'
+import {UpdateImageComponent} from './update-image/update-image.component'
 
 import {AuthGuard} from './auth.guard'
 
@@ -16,8 +17,10 @@ const routes: Routes = [  { path: '', redirectTo: 'login', pathMatch: 'full' },
 // { path: 'upload', component: UploadImageComponent ,canActivate: [AuthGuard]},
 { path: 'api', component: ApiComponentComponent,canActivate: [AuthGuard] },
 { path: 'list', component: ListImagesComponent ,canActivate: [AuthGuard]},
+// { path: 'list', component: ListImagesComponent},
 { path: 'upload', component: UploadFileComponent,canActivate: [AuthGuard]},
-{ path: 'image-display', component: ImageDisplayComponent,canActivate: [AuthGuard]}
+{ path: 'image-display', component: ImageDisplayComponent,canActivate: [AuthGuard]},
+{ path: 'update-image', component: UpdateImageComponent,canActivate: [AuthGuard]}
 
 ];
 

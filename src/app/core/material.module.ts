@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import { CommonModule } from '@angular/common';
 import {
-  MatButtonModule,MatIconModule, MatProgressSpinnerModule, 
+  MatButtonModule,MatIconModule, MatProgressSpinnerModule, MatAutocompleteModule,
   MatProgressBarModule,MAT_DIALOG_DEFAULT_OPTIONS
 } from '@angular/material';
 
@@ -14,7 +14,7 @@ import {
   MatIconModule,
   MatProgressSpinnerModule,
   MatProgressBarModule,
-  
+  MatAutocompleteModule
   
  
   
@@ -26,7 +26,7 @@ import {
   MatIconModule,
    MatProgressSpinnerModule,
    MatProgressBarModule,
-   
+   MatAutocompleteModule
    
    
    ],

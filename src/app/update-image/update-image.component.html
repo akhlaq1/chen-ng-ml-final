@@ -1,0 +1,16 @@
+<div class="container">
+
+  <h3 style="display: block !important">Update Image</h3>
+
+<div  class="ui fluid action input inputdiv" style="width: 80% !important; margin-left:10% !important; margin-bottom:4% !important" >
+    <br/>
+  <input type="text" [(ngModel)]="new_input" placeholder="Input name of the following person" style=" text-align:center !important;" #inputData>
+  <button class="ui button" (click)="onInputClick(inputData.value)">Save</button>
+</div>
+
+  <p *ngIf="image_details.name">Name  : {{new_input}}</p>
+
+  <img src="{{image_details.image_url}}"
+       class="img-rounded" alt="Responsive Image"
+       width="100%" height="auto" />
+</div>

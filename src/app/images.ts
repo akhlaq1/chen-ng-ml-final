@@ -1,3 +1,4 @@
 export interface Images {
-images_url:string
+images_url:string,
+name?: string
 }

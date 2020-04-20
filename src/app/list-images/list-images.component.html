@@ -1,69 +1,77 @@
-<!--
-<table>
-  <tr *ngFor="let student of Student">
-    <td>
-      <img src="{{student.image_url}}" alt="">
-    </td>
-  </tr>
-</table> -->
+<br />
+<div class="ui fluid action input inputdiv"
+  style="width: 100% !important; text-align: center !important; margin-bottom: 3% !important; margin-left: 65%; ">
+
+  <div>
+    <h4>Search By Name: &nbsp;</h4>
+  </div>
+
+  <div class="custom-wrapper-example" matAutocompleteOrigin #origin="matAutocompleteOrigin">
+    <input matInput [formControl]="myControl" [matAutocomplete]="auto" [matAutocompleteConnectedTo]="origin">
+  </div>
+
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let movie of movies$ | async" [value]="movie.name">{{movie.name}}</mat-option>
+  </mat-autocomplete>
+
+</div>
 
 
-<!-- <div class="row">
-  <mdb-image-modal [modalImages]="Student" type="no-margin"></mdb-image-modal>
+
+
+
+<!-- 
+<h1>Movie Search</h1>
+<input
+  type="text"
+  #searchInput
+  (keyup)="search(searchInput.value)"
+  placeholder="search movies..."
+  class="input"
+/>
+<div *ngFor="let movie of (movies$ | async)" >
+  <h4>{{ movie?.name }}</h4>
+  
+</div>
+<div *ngIf="(movies$ | async)?.length < 1">
+  <hr />
+  <p>No results found :(</p>
 </div> -->
 
 
-
-<!-- <div class="row">
-  <mdb-image-modal [modalImages]="student" type="no-margin"></mdb-image-modal>
-</div> -->
-
-<!-- <div style="text-align: right !important; display: block; margin-right: 0%; margin-top: -10vh; padding: 1%">
-
-  <h3>{{local_user.displayName}}</h3>
-
-</div> -->
 
 <div class="container">
 
-		<div class="row">
-   <!--
-            <div class="col-lg-3 col-md-4 col-xs-6 thumb" *ngFor="let student of Student">
-                 -->
-                  <div class="col" *ngFor="let student of Student">
-                  <!-- <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""
-                    data-image="{{student.image_url}}"
-                    data-target="#image-gallery"> -->
-                    <a  class="btn" (click)=image_clicked(student) >
+  <div class="row">
+    <div class="col" *ngFor="let movie of (movies$ | async)">
 
-                    <div class="card" style="width: 18rem; height:28 rem">
-                      <img class="card-img-top" src="{{student.image_url}}" alt="{{student.name}}">
-                      <div class="card-body">
-                        <h5 class="card-title">{{student.name}}</h5>
-                      </div>
-                    </div>
-                    <!--
-                      <img class="img-thumbnail"
-                      src=""
-                      height="800px"
-                      width="800px">
-                      <p>{{student.name}}</p>
-                      -->
+      <div class="card" style="width: 18rem; height:35 rem">
 
-                    </a>
+        <div class="card-header text-right" id="card_header"> 
 
-                <!-- </a> -->
-            </div>
+          <a class="btn update_icon" (click)=update_image(movie)>
+            <mat-icon class="update_icon" id="update_icon">update</mat-icon>
+          </a>
+
+          <a class="btn close-icon" (click)=remove_image(movie)>
+              <mat-icon class="close-icon" id="close_icon">close</mat-icon>
+          </a>
+        </div>
+
+        <a class="btn" (click)=image_clicked(movie)>
+
+
+          <img class="card-img-top" src="{{ movie?.image_url }}" alt="{{movie?.name}}">
+          <div class="card-body">
+            <h5 class="card-title">{{movie?.name}}</h5>
+
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 
-<div class="spinner_container" *ngIf = "!Student">
-  <mat-progress-spinner
-
-  class="example-margin"
-  [color]="color"
-  [mode]="mode"
-  [diameter]=300
-  >
-  </mat-progress-spinner>
-</div>
+  <div class="spinner_container" *ngIf="!Student">
+    <mat-progress-spinner class="example-margin" [color]="color" [mode]="mode" [diameter]=300>
+    </mat-progress-spinner>
+  </div>
